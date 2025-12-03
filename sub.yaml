@@ -19,7 +19,7 @@ steps:
 
   - artifacts:
       objects:
-        location: 'gs://python-app-image/artifacts/'
+        location: 'gs://python-app-image/artifacts/artifacts-demo/'
         paths: ['output/substitutions.txt'] 
 
 

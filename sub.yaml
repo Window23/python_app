@@ -1,4 +1,4 @@
-sbstitutions:
+substitutions:
   _ENV: "staging"
   _SERVICE_NAME: "demo-service"
   _REGION: "europe-west2"

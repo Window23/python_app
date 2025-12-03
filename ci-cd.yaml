@@ -18,4 +18,5 @@ images:
 
 
 options:
-  LOGGING: CLOUD_LOGGING_ONLY
+  logging: CLOUD_LOGGING_ONLY
+

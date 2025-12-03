@@ -17,7 +17,7 @@ steps:
 
 artifacts:
   objects:
-    location: 'gs:// gcp-devops-cert-bucket/artifacts/artifacts-demo/'
+    location: 'gs://gcp-devops-cert-bucket/artifacts-demo/'
     paths:
       - 'output/substitutions.txt'
 

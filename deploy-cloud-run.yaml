@@ -8,13 +8,27 @@
 steps: 
   # 1) Build image(using docker builder)
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v1', '.' ]
+    args: [ 'build', '-t', 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2', '.' ]
 
   # 2) Push image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v1' ]
+    args: [ 'push', 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2' ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    id: 'deploy-cloudrun'
+    entrypoint: 'bash'
+    args:
+      ['-c',echo " Deploying image to Cloud Run..."
+      gcloud run deploy py-app \ 
+      --image=europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2 \
+      --region=europe-west2 \
+      --platform=managed \
+      --allow-unauthenticated \ 
+      --port=8080']
+
+
 images:
-  - 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v1'
+  - 'europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2'
 
 
 options:

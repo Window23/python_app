@@ -11,13 +11,10 @@ steps:
     args:
      - '-c'  
      - |
-        echo "==== Custom Substitutions ===="
-        echo "IMAGE_NAME: ${IMAGE_NAME}"
-        echo "IMAGE_TAG: ${IMAGE_TAG}"
-        echo "DEPLOY_ENV: ${DEPLOY_ENV}"
-        echo "SERVICE_NAME: ${SERVICE_NAME}"
-        echo "REGION: ${REGION}"
-        echo "TRIGGER_NAME: ${TRIGGER_NAME}"
+        echo "==== Accessing Custom Substitutions ===="
+        DEPLOY_ENV="${_ENV}"
+        SERVICE_NAME="${_SERVICE_NAME}"
+        REGION="${_REGION}"      
 
 
   - name: 'ubuntu'
@@ -25,15 +22,15 @@ steps:
     args:
       - '-c'
       - |
-        echo "=== builtin sbstitutions ==="
-        echo "PROJECT_ID: ${PROJECT_ID}"
-        echo "BUILD_ID: ${BUILD_ID}"
-        echo "BUILD_NUMBER: ${BUILD_NUMBER}"
-        echo "REPO_NAME: ${REPO_NAME}"
-        echo "BRANCH_NAME: ${BRANCH_NAME}"
-        echo "TAG_NAME: ${TAG_NAME}"
-        echo "REVISION_ID: ${REVISION_ID}"
-        echo "SHORT_SHA: ${SHORT_SHA}"
-
+        echo "=== builtin variables ==="
+        echo "PROJECT_ID: $PROJECT_ID"
+        echo "BUILD_ID: $BUILD_ID"
+        echo "BUILD_NUMBER: $BUILD_NUMBER"
+        echo "REPO_NAME: $REPO_NAME"
+        echo "BRANCH_NAME: $BRANCH_NAME"
+        echo "TAG_NAME: $TAG_NAME"
+        echo "REVISION_ID: $REVISION_ID"
+        echo "SHORT_SHA: $SHORT_SHA"
+        echo "TRIGGER_NAME: ${TRIGGER_NAME}"
 options:
   logging: CLOUD_LOGGING_ONLY

@@ -22,11 +22,11 @@ steps:
       - |
         echo " Deploying image to Cloud Run..."
         gcloud run deploy py-app \ 
-        --image=europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2 \
-        --region=europe-west2 \
-        --platform=managed \
-        --allow-unauthenticated \ 
-        --port=8080'
+          --image=europe-west2-docker.pkg.dev/stately-forest-480020/python-app-image/app-image:v2 \
+          --region=europe-west2 \
+          --platform=managed \
+          --allow-unauthenticated \ 
+          --port=8080'
 
 
 images:

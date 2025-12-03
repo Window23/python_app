@@ -2,27 +2,24 @@ substitutions:
   _ENV: "staging"
   _SERVICE_NAME: "demo-service"
   _REGION: "europe-west2"
-
-
-
+ 
 steps:
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
-     - '-c'  
-     - |
+      - '-c'
+      - |
         mkdir -p output
-        echo "==== Accessing Custom Substitutions ====" >> output/substitutions.txt
-        DEPLOY_ENV="${_ENV}" >> output/substitutions.txt
-        SERVICE_NAME="${_SERVICE_NAME}" >> output/substitutions.txt
-        REGION="${_REGION}" >> output/substitutions.txt
+        echo "==== Accessing Custom Substitutions ====" > output/substitutions.txt
+        echo "DEPLOY_ENV=${_ENV}"        >> output/substitutions.txt
+        echo "SERVICE_NAME=${_SERVICE_NAME}" >> output/substitutions.txt
+        echo "REGION=${_REGION}"         >> output/substitutions.txt
 
-  - artifacts:
-      objects:
-        location: 'gs://python-app-image/artifacts/artifacts-demo/'
-        paths: ['output/substitutions.txt'] 
+artifacts:
+  objects:
+    location: 'gs://python-app-image/artifacts/artifacts-demo/'
+    paths:
+      - 'output/substitutions.txt'
 
-
- 
 options:
   logging: CLOUD_LOGGING_ONLY

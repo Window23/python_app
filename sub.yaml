@@ -11,22 +11,18 @@ steps:
     args:
      - '-c'  
      - |
-        echo "==== Accessing Custom Substitutions ===="
-        DEPLOY_ENV="${_ENV}"
-        SERVICE_NAME="${_SERVICE_NAME}"
-        REGION="${_REGION}"      
+        mkdir -p output
+        echo "==== Accessing Custom Substitutions ====" >> output/substitutions.txt
+        DEPLOY_ENV="${_ENV}" >> output/substitutions.txt
+        SERVICE_NAME="${_SERVICE_NAME}" >> output/substitutions.txt
+        REGION="${_REGION}" >> output/substitutions.txt
+
+  - artifacts:
+      objects:
+        location: 'gs://python-app-image/artifacts/'
+        paths: ['output/substitutions.txt'] 
 
 
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        echo "=== builtin variables ==="
-        echo "PROJECT_ID: $PROJECT_ID"
-        echo "REPO_NAME: $REPO_NAME"
-        echo "BRANCH_NAME: $BRANCH_NAME"
-        echo "SHORT_SHA: $SHORT_SHA"
-        echo "TRIGGER_NAME: ${TRIGGER_NAME}"
+ 
 options:
   logging: CLOUD_LOGGING_ONLY

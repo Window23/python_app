@@ -24,12 +24,8 @@ steps:
       - |
         echo "=== builtin variables ==="
         echo "PROJECT_ID: $PROJECT_ID"
-        echo "BUILD_ID: $BUILD_ID"
-        echo "BUILD_NUMBER: $BUILD_NUMBER"
         echo "REPO_NAME: $REPO_NAME"
         echo "BRANCH_NAME: $BRANCH_NAME"
-        echo "TAG_NAME: $TAG_NAME"
-        echo "REVISION_ID: $REVISION_ID"
         echo "SHORT_SHA: $SHORT_SHA"
         echo "TRIGGER_NAME: ${TRIGGER_NAME}"
 options:

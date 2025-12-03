@@ -17,7 +17,7 @@ steps:
 
 artifacts:
   objects:
-    location: 'gs://python-app-image/artifacts/artifacts-demo/'
+    location: 'gs:// gcp-devops-cert-bucket/artifacts/artifacts-demo/'
     paths:
       - 'output/substitutions.txt'
 

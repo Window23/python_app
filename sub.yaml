@@ -1,0 +1,39 @@
+sbstitutions:
+  _ENV: "staging"
+  _SERVICE_NAME: "demo-service"
+  _REGION: "europe-west2"
+
+
+
+steps:
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+     - '-c'  
+     - |
+        echo "==== Custom Substitutions ===="
+        echo "IMAGE_NAME: $IMAGE_NAME"
+        echo "IMAGE_TAG: $IMAGE_TAG"
+        echo "DEPLOY_ENV: $DEPLOY_ENV"
+        echo "SERVICE_NAME: $SERVICE_NAME"
+        echo "REGION: $REGION"
+        echo "TRIGGER_NAME: $TRIGGER_NAME"
+
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "=== builtin sbstitutions ==="
+        echo "PROJECT_ID: $PROJECT_ID"
+        echo "BUILD_ID: $BUILD_ID"
+        echo "BUILD_NUMBER: $BUILD_NUMBER"
+        echo "REPO_NAME: $REPO_NAME"
+        echo "BRANCH_NAME: $BRANCH_NAME"
+        echo "TAG_NAME: $TAG_NAME"
+        echo "REVISION_ID: $REVISION_ID"
+        echo "SHORT_SHA: $SHORT_SHA"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
